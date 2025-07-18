@@ -16,13 +16,13 @@ export default async function handler(req, res) {
       host: 'smtp.ethereal.email',
       port: 587,
       auth: {
-        user: 'your_username@ethereal.email',
-        pass: 'your_password'
+        user: 'muhammadnadeem1636@gmail.com',
+        pass: 'tzhl bigq opjq ojfm'
       }
     });
 
     const mailOptions = {
-      from: `"${senderName}" <your_username@ethereal.email>`,
+      from: `"${senderName}" <muhammadnadeem1636@gmail.com>`,
       to: toEmail,
       subject: `New message from ${senderName}`,
       html: `<p>Hi ${receiverName},</p><p>${messagePreview}</p><p>Regards,<br>${senderName}</p>`
