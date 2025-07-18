@@ -13,11 +13,12 @@ export default async function handler(req, res) {
 
   try {
     const transporter = nodemailer.createTransport({
-      host: 'smtp.ethereal.email',
-      port: 587,
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
       auth: {
         user: 'muhammadnadeem1636@gmail.com',
-        pass: 'tzhl bigq opjq ojfm'
+        pass: 'tzhl bigq opjq ojfm' // Use a real Gmail App Password here
       }
     });
 
