@@ -48,35 +48,48 @@ export default async function handler(req, res) {
 
   // --- HTML Email Template ---
   const htmlContent = `
-    <div style="max-width: 600px; margin: auto; font-family: Arial, sans-serif; border: 1px solid #e6e6e6; border-radius: 8px; overflow: hidden;">
-      <!-- Header with gradient -->
-      <div style="background: linear-gradient(to right, #1fb4df, #14b8a6, orange); padding: 20px; text-align: center; color: white;">
-        <h2 style="margin: 0;">📩 New Message Notification</h2>
-        <p style="margin: 5px 0 0; font-size: 12px;">${timestamp}</p>
-      </div>
+  <div style="max-width: 600px; margin: auto; font-family: 'Segoe UI', Arial, sans-serif; 
+              border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
 
-      <!-- Body -->
-      <div style="padding: 20px;">
-        <p>Hi ${receiverName},</p>
-        <p><strong>${senderName}</strong> sent you a message:</p>
-        <blockquote style="background: #f9f9f9; border-left: 4px solid #14b8a6; padding: 10px; color: #333; font-style: italic;">
-          ${messagePreview}
-        </blockquote>
-        <div style="text-align: center; margin-top: 20px;">
-          <a href="${conversationLink}" 
-            style="display: inline-block; background: linear-gradient(to right, #1fb4df, #14b8a6, orange); 
-                   color: white; text-decoration: none; padding: 12px 20px; border-radius: 6px; font-weight: bold;">
-            Reply Now
-          </a>
-        </div>
-      </div>
+    <!-- Header with gradient & background image -->
+    <div style="background: linear-gradient(to right, rgba(31,180,223,0.95), rgba(20,184,166,0.95), rgba(255,165,0,0.9)),
+                url('https://www.transparenttextures.com/patterns/white-diamond.png');
+                background-size: cover; background-position: center;
+                padding: 28px; text-align: center; color: white;">
+      <h2 style="margin: 0; font-size: 22px; font-weight: 600;">📩 You Have a New Message</h2>
+      <p style="margin: 8px 0 0; font-size: 13px; opacity: 0.9;">${timestamp}</p>
+    </div>
 
-      <!-- Footer -->
-      <div style="background-color: #f3f4f6; padding: 15px; text-align: center; font-size: 12px; color: #777;">
-        This is an automated message. Do not reply directly.
+    <!-- Body -->
+    <div style="background-color: white; padding: 24px;">
+      <p style="font-size: 16px; margin-bottom: 10px;">Hi <strong>${receiverName}</strong>,</p>
+      <p style="font-size: 15px; color: #444; margin-bottom: 16px;">
+        <strong style="color: #14b8a6;">${senderName}</strong> has sent you a new message:
+      </p>
+
+      <blockquote style="background: #f9fafb; border-left: 4px solid #14b8a6; padding: 14px 18px; 
+                         color: #333; font-style: italic; border-radius: 6px; margin: 0 0 20px;">
+        ${messagePreview}
+      </blockquote>
+
+      <div style="text-align: center; margin-top: 20px;">
+        <a href="${conversationLink}" 
+           style="display: inline-block; background: linear-gradient(to right, #1fb4df, #14b8a6, orange); 
+                  color: white; text-decoration: none; padding: 14px 28px; border-radius: 8px; 
+                  font-weight: bold; font-size: 15px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+                  transition: all 0.2s ease-in-out;">
+          Reply Now
+        </a>
       </div>
     </div>
-  `;
+
+    <!-- Footer -->
+    <div style="background-color: #f3f4f6; padding: 16px; text-align: center; 
+                font-size: 12px; color: #777;">
+      This is an automated notification — please do not reply directly.
+    </div>
+  </div>
+`;
 
   // --- Email Options ---
   const mailOptions = {
